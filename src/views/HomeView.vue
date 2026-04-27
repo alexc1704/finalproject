@@ -1,19 +1,27 @@
-<script setup>
-import { ref } from "vue";
-
-let message = ref("Hello World! This is a VueJS and Flask Starter Template.")
-
-</script>
-
 <template>
-    <div class="container">
-      <div class="text-center">
-        <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-        <h1>{{ message }}</h1>
+  <div class="container mt-5">
+    <div class="text-center">
+
+      <h1 class="display-4 fw-bold">💘 DriftDater</h1>
+      <p class="lead text-muted mt-3">
+        Find your perfect match. Connect with people who share your interests.
+      </p>
+
+      <div class="mt-4">
+        <router-link to="/register" class="btn btn-primary btn-lg me-3">
+          Get Started
+        </router-link>
+        <router-link to="/login" class="btn btn-outline-secondary btn-lg">
+          Login
+        </router-link>
       </div>
+
     </div>
+  </div>
 </template>
 
+<script setup>
+</script>
+
 <style>
-/* Add any component specific styles here */
 </style>

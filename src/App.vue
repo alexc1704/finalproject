@@ -1,21 +1,27 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import AppHeader from "@/components/AppHeader.vue";
-import AppFooter from "@/components/AppFooter.vue";
-</script>
-
 <template>
   <AppHeader />
-
-  <main>
-    <RouterView />
+  <main class="container mt-4">
+    <router-view v-slot="{ Component }">
+      <transition name="fade" mode="out-in">
+        <component :is="Component" />
+      </transition>
+    </router-view>
   </main>
-  
   <AppFooter />
 </template>
 
+<script setup>
+import AppHeader from './components/AppHeader.vue'
+import AppFooter from './components/AppFooter.vue'
+</script>
+
 <style>
-body {
-  padding-top: 75px;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.15s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

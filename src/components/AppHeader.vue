@@ -1,38 +1,88 @@
+<!-- Replace your current AppHeader.vue with this -->
 <template>
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/">VueJS with Flask</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-              <RouterLink to="/" class="nav-link active">Home</RouterLink>
-            </li>
-            <li class="nav-item">
-              <RouterLink class="nav-link" to="/about">About</RouterLink>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
+  <nav class="navbar navbar-expand-lg navbar-dark px-4"
+    style="background: linear-gradient(135deg, #6f42c1, #e83e8c);">
+
+    <router-link class="navbar-brand fw-bold" to="/">
+      💘 DriftDater
+    </router-link>
+
+    <!-- Hamburger -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      @click="menuOpen = !menuOpen"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div :class="['collapse navbar-collapse', menuOpen ? 'show' : '']">
+      <ul class="navbar-nav ms-auto">
+
+        <template v-if="!authStore.isLoggedIn">
+          <li class="nav-item">
+            <router-link class="nav-link" to="/login"
+              @click="menuOpen = false">
+              Login
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/register"
+              @click="menuOpen = false">
+              Register
+            </router-link>
+          </li>
+        </template>
+
+        <template v-else>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/dashboard"
+              @click="menuOpen = false">
+              Dashboard
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/matches"
+              @click="menuOpen = false">
+              Matches
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/messages"
+              @click="menuOpen = false">
+              Messages
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/profile"
+              @click="menuOpen = false">
+              Profile
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" @click="handleLogout">
+              Logout
+            </a>
+          </li>
+        </template>
+
+      </ul>
+    </div>
+  </nav>
 </template>
 
 <script setup>
-import { RouterLink } from "vue-router";
-</script>
+import { ref } from 'vue'
+import { useAuthStore } from '../stores/auth'
+import { useRouter } from 'vue-router'
 
-<style>
-/* Add any component specific styles here */
-</style>
+const authStore = useAuthStore()
+const router = useRouter()
+const menuOpen = ref(false)
+
+function handleLogout() {
+  authStore.logout()
+  menuOpen.value = false
+  router.push('/login')
+}
+</script>
