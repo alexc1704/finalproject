@@ -174,7 +174,7 @@ Full details in [`docs/API_DOCUMENTATION.md`](./docs/API_DOCUMENTATION.md).
 
 ## Database Schema
 
-ER Diagram: [`docs/er_diagram.png`](./docs/ER Diagram.png)
+ER Diagram: [`docs/ER DIAGRAM.png`](./docs/ER Diagram.png)
 
 | Table | Description |
 |-------|-------------|
