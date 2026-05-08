@@ -7,6 +7,7 @@ from uuid import uuid4
 import random
 
 
+
 try:
     from faker import Faker
 except ImportError:
@@ -1036,6 +1037,30 @@ def favorite(profile_id):
 @app.route("/api/interests")
 def list_interests():
     return jsonify({"interests": [i.name for i in Interest.query.order_by(Interest.name.asc()).all()]}), 200
+
+
+@app.route('/api/favorites', methods=['GET'])
+def get_favorites():
+    user_id = request.args.get('user_id')
+
+    favorites = Favorite.query.filter_by(user_id=user_id).all()
+
+    results = []
+
+    for fav in favorites:
+        profile = fav.profile
+
+        results.append({
+            'id': profile.id,
+            'name': f'{profile.first_name} {profile.last_name}',
+            'age': profile.age,
+            'location': profile.location,
+            'bio': profile.bio,
+            'photo': profile.profile_picture,
+            'interests': [i.name for i in profile.interests]
+        })
+
+    return jsonify(results), 200
 
 
 

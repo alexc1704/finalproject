@@ -7,6 +7,7 @@ import MatchesView from '../views/MatchesView.vue'
 import MessagesView from '../views/MessagesView.vue'
 import ProfileView from '../views/ProfileView.vue'
 import { useAuthStore } from '../stores/auth'
+import FavoritesView from '../views/FavoritesView.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -18,7 +19,8 @@ const router = createRouter({
     { path: '/matches', component: MatchesView, meta: { requiresAuth: true } },
     { path: '/messages', component: MessagesView, meta: { requiresAuth: true } },
     { path: '/profile', component: ProfileView, meta: { requiresAuth: true } },
-    { path: '/:pathMatch(.*)*', component: () => import('../views/NotFoundView.vue') }
+    { path: '/:pathMatch(.*)*', component: () => import('../views/NotFoundView.vue') },
+    { path: '/favorites', name: 'favorites', component: FavoritesView }
   ]
 })
 

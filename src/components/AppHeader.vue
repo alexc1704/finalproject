@@ -15,6 +15,7 @@
           <li class="nav-item"><router-link class="nav-link" to="/dashboard" @click="menuOpen=false">Browse</router-link></li>
           <li class="nav-item"><router-link class="nav-link" to="/matches" @click="menuOpen=false">Matches</router-link></li>
           <li class="nav-item"><router-link class="nav-link" to="/messages" @click="menuOpen=false">Messages</router-link></li>
+          <li class="nav-item"><router-link class="nav-link" to="/favorites" @click="menuOpen=false">Favorites</router-link></li>
           <li class="nav-item"><router-link class="nav-link" to="/profile" @click="menuOpen=false">Profile</router-link></li>
           <li class="nav-item"><a class="nav-link" href="#" @click.prevent="handleLogout">Logout</a></li>
         </template>

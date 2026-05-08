@@ -11,7 +11,12 @@
       <div v-for="item in matches" :key="item.id" class="col-md-6">
         <div class="card border-0 shadow-sm rounded-4 p-3">
           <div class="d-flex gap-3">
-            <img :src="item.other_user.photo || avatarUrl(item.other_user.name)" class="rounded-circle" width="70" height="70" />
+            <img
+                :src="profile.photo ? `http://127.0.0.1:5050${profile.photo}` : avatarUrl(profile.name)"
+                class="rounded-circle object-fit-cover"
+                width="64"
+                height="64"
+              />
             <div class="flex-grow-1">
               <h5 class="fw-bold mb-0">{{ item.other_user.name }}, {{ item.other_user.age }}</h5>
               <p class="text-muted small mb-1">📍 {{ item.other_user.location }} • {{ item.other_user.match_score }}% match</p>

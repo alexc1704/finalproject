@@ -40,7 +40,12 @@
         <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden" :class="profile.is_boosted ? 'boosted-card' : ''">
           <div class="card-body">
             <div class="d-flex gap-3 align-items-center mb-3">
-              <img :src="profile.photo || avatarUrl(profile.name)" class="rounded-circle object-fit-cover" width="64" height="64" />
+              <img
+                  :src="profile.photo ? `http://127.0.0.1:5050${profile.photo}` : avatarUrl(profile.name)"
+                  class="rounded-circle object-fit-cover"
+                  width="64"
+                  height="64"
+                />
               <div>
                 <h5 class="fw-bold mb-0">
                   {{ profile.name }}, {{ profile.age }}

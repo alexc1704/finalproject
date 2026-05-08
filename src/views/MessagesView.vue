@@ -22,7 +22,12 @@
       <div class="col-md-8">
         <div class="card border-0 shadow-sm rounded-4 chat-card">
           <div v-if="selectedMatch" class="card-header bg-white d-flex align-items-center gap-2">
-            <img :src="selectedMatch.other_user.photo || avatarUrl(selectedMatch.other_user.name)" width="45" height="45" class="rounded-circle" />
+            <img
+                :src="profile.photo ? `http://127.0.0.1:5050${profile.photo}` : avatarUrl(profile.name)"
+                class="rounded-circle object-fit-cover"
+                width="64"
+                height="64"
+              />
             <div><div class="fw-bold">{{ selectedMatch.other_user.name }}</div><small class="text-muted">Matched user • replies update automatically</small></div>
           </div>
           <div v-if="selectedMatch" ref="messagesBox" class="card-body messages-box">
