@@ -119,7 +119,6 @@ SECRET_KEY=your_secret_key_here
 DATABASE_URL=postgresql://username:password@localhost/driftdater
 DEBUG=True
 ```
-> ⚠️ Never commit your `.env` file — it is already listed in `.gitignore`.
 
 ```bash
 flask db init
